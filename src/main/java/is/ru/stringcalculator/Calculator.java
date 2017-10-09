@@ -12,9 +12,7 @@ public class Calculator {
 		{
 			if(text.equals("1"))
 			{
-				String number[] = new String[]{text};
-				
-				return Integer.parseInt(number[0]);
+				return toInt(text);
 			}
 			
 			if(text.contains(","))
@@ -31,9 +29,14 @@ public class Calculator {
 		int total = 0;
 		for(String number : numbers)
 		{
-			total += Integer.parseInt(number);
+			total += toInt(number);
 		}
 		return total;
+	}
+	
+	private static int toInt(String number)
+	{
+		return Integer.parseInt(number);
 	}
 	
 	
