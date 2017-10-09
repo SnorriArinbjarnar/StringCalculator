@@ -12,7 +12,13 @@ public class Calculator {
 		{
 			if(text.equals("1"))
 			{
-				return toInt(text);
+				if(toInt(text) >= 0)
+				{
+					return toInt(text);
+				}
+				throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
+				
+				
 			}
 			
 			if(text.contains(","))
