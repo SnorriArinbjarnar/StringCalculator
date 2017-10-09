@@ -2,7 +2,7 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	public int add(String[] text)
+	public int add(String text)
 	{
 		if(text.equals(""))
 		{
@@ -12,7 +12,15 @@ public class Calculator {
 		{
 			if(text.equals("1"))
 			{
-				return Integer.parseInt(text[0]);
+				String number[] = new String[]{text};
+				
+				return Integer.parseInt(number[0]);
+			}
+			
+			if(text.contains(","))
+			{
+				String numbers[] = text.split(",");
+				return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
 			}
 		}
 		return 1;
