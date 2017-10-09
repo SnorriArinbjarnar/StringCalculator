@@ -35,6 +35,18 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			{
 				text.replaceAll("\n","");
 			}
+			
+			if(text.contains("//"))
+			{
+				String[] tokens = text.split("[//\n]+;");
+				String newString = "";
+				for(String s : tokens)
+				{
+					newString+=s;
+				}
+				newString.replaceAll(";",",");
+				add(newString);
+			}
 		}
 		return 1;
 	}
