@@ -31,7 +31,9 @@ public class Calculator {
 	
 	private static int sum(String[] numbers)
 	{
+		
 		int total = 0;
+		
 		for(String number : numbers)
 		{
 			total += toInt(number);
@@ -41,7 +43,13 @@ public class Calculator {
 	
 	private static int toInt(String number)
 	{
+		if(Integer.parseInt(number) > 1000)
+		{
+			return 0;
+		}
+		
 		return Integer.parseInt(number);
+	
 	}
 	
 	
