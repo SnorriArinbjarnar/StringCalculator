@@ -1,9 +1,13 @@
 package is.ru.stringcalculator;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Calculator {
-
+static ArrayList<String> negativeVal = new ArrayList<String>();
 	public int add(String text)
 	{
+		
+		
 		if(text.equals(""))
 		{
 			return 0;
@@ -40,11 +44,35 @@ public class Calculator {
 		
 		int total = 0;
 		
+		
 		for(String number : numbers)
 		{
 			total += toInt(number);
 		}
-		return total;
+		
+		if(negativeVal.size() == 0)
+		{
+			return total;
+		}
+		
+		else 
+		{
+			throw new java.lang.IllegalArgumentException("Negatives not allowed: " +print());
+			//print(negativeVal);
+		}
+	}
+	
+	
+	
+	private static String print()
+	{
+		String finalString ="";
+		
+		for(String numbers : negativeVal)
+		{
+			finalString+=numbers;
+		}
+		return finalString;
 	}
 	
 	private static int toInt(String number)
@@ -52,6 +80,19 @@ public class Calculator {
 		if(Integer.parseInt(number) > 1000)
 		{
 			return 0;
+		}
+		
+		if(Integer.parseInt(number) < 0)
+		{
+			
+			if(negativeVal.size() == 0)
+			{
+				negativeVal.add(number);
+			}
+			
+			negativeVal.add(","+number);
+			
+			
 		}
 		
 		return Integer.parseInt(number);

@@ -45,6 +45,12 @@ public class CalculatorTest {
 	}
 	
 	@Test 
+	public void testWithTwoNegativeNumbers()
+	{
+		assertEquals("Negatives not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
+	}
+	
+	@Test 
 	public void testWithBiggerThan1000()
 	{
 		assertEquals(2, Calculator.add("1001,2"));
