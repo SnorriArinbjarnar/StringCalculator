@@ -10,8 +10,12 @@ public class Calculator {
 		}
 		else
 		{
-			return 1;
+			if(text.equals("1"))
+			{
+				return Integer.parseInt(text[0]);
+			}
 		}
+		return 1;
 	}
 	
 	
