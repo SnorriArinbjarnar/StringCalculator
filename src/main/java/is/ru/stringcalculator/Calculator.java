@@ -20,6 +20,11 @@ public class Calculator {
 				String numbers[] = text.split(",");
 				return sum(numbers);
 			}
+			
+			if(text.contains("\n"))
+			{
+				text.replaceAll("\n","");
+			}
 		}
 		return 1;
 	}
