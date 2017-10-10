@@ -8,28 +8,14 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 	{
 		
 		
-		if(text.equals(""))
+		if(isEmpty(text))
 		{
 			return 0;
 		}
 		else
 		{
-			if(text.equals("1"))
-			{
-				if(toInt(text) >= 0)
-				{
-					return toInt(text);
-				}
-				throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
-				
-				
-			}
+			calculateInput(text);
 			
-			if(text.contains(","))
-			{
-				String numbers[] = text.split(",");
-				return sum(numbers);
-			}
 			
 			if(text.contains("\n"))
 			{
@@ -48,7 +34,44 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				add(newString);
 			}
 		}
-		return 1;
+		return 42;
+	}
+	
+	private boolean isEmpty(String text)
+	{
+		if(text.equals(""))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	private int oneNumber(String text)
+	{
+		if(toInt(text) >= 0)
+		{
+			return toInt(text);
+		}
+		throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
+	}
+	
+	private int multipleNumbers(String text)
+	{
+		String numbers[] = text.split(",");
+		return sum(numbers);
+	}
+	
+	private void calculateInput(String text)
+	{
+		if(text.equals("1"))
+		{
+			oneNumber(text);
+		}
+		
+		if(text.contains(","))
+		{
+			multipleNumbers(text);
+		}
 	}
 	
 	private static int sum(String[] numbers)
