@@ -44,7 +44,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				{
 					newString+=s;
 				}
-				newString.replaceAll(";",",");
+				newString.replaceAll("[\\D]",",");
 				add(newString);
 			}
 		}
