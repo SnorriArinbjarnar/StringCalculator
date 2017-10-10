@@ -13,11 +13,12 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			return 0;
 		}
 		else
-		{
+		{	
+			validateInput(text);
 			calculateInput(text);
 			
 			
-			if(text.contains("\n"))
+			/*if(text.contains("\n"))
 			{
 				text.replaceAll("\n","");
 			}
@@ -32,7 +33,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				}
 				newString.replaceAll("[\\D]",",");
 				add(newString);
-			}
+			}*/
 		}
 		return 42;
 	}
@@ -53,6 +54,28 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			return toInt(text);
 		}
 		throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
+	}
+	
+	private void validateInput(String text)
+	{
+		if(text.contains("\n"))
+		{
+			text.replaceAll("\n","");
+		}
+		
+		if(text.contains("//"))
+		{
+			String[] tokens = text.split("[//\n]+;");
+				String newString = "";
+				for(String s : tokens)
+				{
+					newString+=s;
+				}
+				newString.replaceAll("[\\D]",",");
+				add(newString);
+		}
+		
+		
 	}
 	
 	private int multipleNumbers(String text)
