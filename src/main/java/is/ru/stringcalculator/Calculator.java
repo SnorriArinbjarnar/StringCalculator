@@ -1,44 +1,43 @@
 package is.ru.stringcalculator;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.io.*;
 
 public class Calculator {
 static ArrayList<String> negativeVal = new ArrayList<String>();
-	public int add(String text)
+	public static int add(String text)
 	{
+		Pattern pattern = Pattern.compile("[0-9]");
+		Matcher matcher = pattern.matcher(text);
 		
-		
-		if(isEmpty(text))
+		if(text.isEmpty())
 		{
 			return 0;
 		}
-		else
-		{	
-			validateInput(text);
-			calculateInput(text);
-			
-			
-			/*if(text.contains("\n"))
+		else 
+		{
+			if(matcher.find())
 			{
-				text.replaceAll("\n","");
+				return oneNumber(text);
+			}
+			//validateInput(text);
+			
+			if(text.contains(","))
+			{
+				return multipleNumbers(text);
 			}
 			
-			if(text.contains("//"))
-			{
-				String[] tokens = text.split("[//\n]+;");
-				String newString = "";
-				for(String s : tokens)
-				{
-					newString+=s;
-				}
-				newString.replaceAll("[\\D]",",");
-				add(newString);
-			}*/
+			return 42;
 		}
-		return 42;
+			
+		
+		
 	}
 	
-	private boolean isEmpty(String text)
+	// Input validation helper 
+	public static boolean isEmpty(String text)
 	{
 		if(text.equals(""))
 		{
@@ -47,16 +46,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		return false;
 	}
 	
-	private int oneNumber(String text)
-	{
-		if(toInt(text) >= 0)
-		{
-			return toInt(text);
-		}
-		throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
-	}
-	
-	private void validateInput(String text)
+	public static void validateInput(String text)
 	{
 		if(text.contains("\n"))
 		{
@@ -74,17 +64,21 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				newString.replaceAll("[\\D]",",");
 				add(newString);
 		}
-		
-		
 	}
 	
-	private int multipleNumbers(String text)
+	public static String print()
 	{
-		String numbers[] = text.split(",");
-		return sum(numbers);
+		String finalString ="";
+		
+		for(String numbers : negativeVal)
+		{
+			finalString+=numbers;
+		}
+		return finalString;
 	}
 	
-	private void calculateInput(String text)
+	//Calculations helper function
+	public static void calculateInput(String text)
 	{
 		if(text.equals("1"))
 		{
@@ -97,11 +91,24 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		}
 	}
 	
-	private static int sum(String[] numbers)
+	public static int oneNumber(String text)
 	{
-		
+		if(toInt(text) >= 0)
+		{
+			return toInt(text);
+		}
+		throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
+	}
+	
+	public static int multipleNumbers(String text)
+	{
+		String numbers[] = text.split(",");
+		return sum(numbers);
+	}
+	
+	public static int sum(String[] numbers)
+	{
 		int total = 0;
-		
 		
 		for(String number : numbers)
 		{
@@ -116,24 +123,10 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		else 
 		{
 			throw new java.lang.IllegalArgumentException("Negatives not allowed: " +print());
-			//print(negativeVal);
 		}
 	}
 	
-	
-	
-	private static String print()
-	{
-		String finalString ="";
-		
-		for(String numbers : negativeVal)
-		{
-			finalString+=numbers;
-		}
-		return finalString;
-	}
-	
-	private static int toInt(String number)
+	public static int toInt(String number)
 	{
 		if(Integer.parseInt(number) > 1000)
 		{
@@ -149,12 +142,8 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			}
 			
 			negativeVal.add(","+number);
-			
-			
 		}
-		
 		return Integer.parseInt(number);
-	
 	}
 	
 	
