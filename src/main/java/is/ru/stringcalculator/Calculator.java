@@ -9,7 +9,7 @@ public class Calculator {
 static ArrayList<String> negativeVal = new ArrayList<String>();
 	public static int add(String text)
 	{
-		Pattern pattern = Pattern.compile("[0-9]");
+		Pattern pattern = Pattern.compile("^[0-9]{1}$");
 		Matcher matcher = pattern.matcher(text);
 		
 		if(text.isEmpty())
@@ -32,8 +32,6 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			return 42;
 		}
 			
-		
-		
 	}
 	
 	// Input validation helper 

@@ -21,13 +21,13 @@ public class CalculatorTest {
 		assertEquals(2, Calculator.add("2"));
 	}
 	
-	/*@Test
+	@Test
 	public void testTwoNumbers()
 	{
 		assertEquals(3, Calculator.add("1,2"));
 	}
 	
-	@Test
+	/*@Test
 	public void testMultipleNumbers()
 	{
 		assertEquals(6, Calculator.add("2,2,2"));
