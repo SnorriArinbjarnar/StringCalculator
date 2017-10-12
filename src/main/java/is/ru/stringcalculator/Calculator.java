@@ -12,22 +12,35 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		Pattern pattern = Pattern.compile("^[0-9]{1}$");
 		Matcher matcher = pattern.matcher(text);
 		
+		Pattern newLinePattern = Pattern.compile(".*\\R.*");
+		Matcher newLineMatcher = newLinePattern.matcher(text);
+		
 		if(text.isEmpty())
 		{
 			return 0;
 		}
 		else 
 		{
+			
+			
 			if(matcher.find())
 			{
 				return oneNumber(text);
 			}
 			//validateInput(text);
 			
+			if(newLineMatcher.find())
+			{
+				text = text.replaceAll("\\n",",");
+				
+			}
+			
 			if(text.contains(","))
 			{
 				return multipleNumbers(text);
 			}
+			
+			
 			
 			return 42;
 		}
@@ -44,11 +57,11 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		return false;
 	}
 	
-	public static void validateInput(String text)
+	public static String validateInput(String text)
 	{
 		if(text.contains("\n"))
 		{
-			text.replaceAll("\n","");
+			return text.replaceAll("\n","");
 		}
 		
 		if(text.contains("//"))
@@ -59,9 +72,10 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				{
 					newString+=s;
 				}
-				newString.replaceAll("[\\D]",",");
-				add(newString);
+				return newString.replaceAll("[\\D]",",");
+				//add(newString);
 		}
+		return "";
 	}
 	
 	public static String print()

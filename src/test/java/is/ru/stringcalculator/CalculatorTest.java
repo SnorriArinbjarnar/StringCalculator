@@ -27,7 +27,7 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("1,2"));
 	}
 	
-	/*@Test
+	@Test
 	public void testMultipleNumbers()
 	{
 		assertEquals(6, Calculator.add("2,2,2"));
@@ -39,7 +39,7 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 	
-	@Test 
+	/*@Test 
 	public void testWithOneNegativeNumber()
 	{
 		assertEquals("Negatives not allowed: -1", Calculator.add("-1"));
