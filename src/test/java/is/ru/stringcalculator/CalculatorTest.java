@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-	/*@Test
+	@Test
 	public void testEmptyString() {
 		//sendi tóman streng í calculator
 		//hann ætti að skila 0
@@ -32,19 +32,11 @@ public class CalculatorTest {
 	{
 		assertEquals(6, Calculator.add("2,2,2"));
 	}
-	*/
+	
 	@Test 
 	public void testWithNewLine()
 	{
 		assertEquals(6, Calculator.add("1\n2,3"));
-	}
-	
-	
-	/*
-	@Test 
-	public void testWithTwoNegativeNumbers()
-	{
-		assertEquals("Negatives not allowed: -4,-5", Calculator.add("2,-4,3,-5"));
 	}
 	
 	@Test 
@@ -62,14 +54,10 @@ public class CalculatorTest {
 	@Test 
 	public void testWithDifferentDelimiter()
 	{
-		assertEquals(3, Calculator.add("//;\n1|||2"));
+		assertEquals(3, Calculator.add("//|\n1|2"));
 	}
 	
-	@Test 
-	public void testWithLongerDelimiter()
-	{
-		assertEquals(4, Calculator.add("//;\n1;/||\\=2;/1"));
-	}*/
+	
 	
 	
 }

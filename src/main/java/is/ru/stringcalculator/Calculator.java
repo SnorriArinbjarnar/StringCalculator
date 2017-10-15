@@ -12,9 +12,6 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		Pattern pattern = Pattern.compile("^-?[0-9]{1}$");
 		Matcher matcher = pattern.matcher(text);
 		
-		Pattern newLinePattern = Pattern.compile(".*\\R.*");
-		Matcher newLineMatcher = newLinePattern.matcher(text);
-		
 		if(text.isEmpty())
 		{
 			return 0;
@@ -46,7 +43,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 	}		
 			
 	// Input validation helper 
-	public static boolean isEmpty(String text)
+	private static boolean isEmpty(String text)
 	{
 		if(text.equals(""))
 		{
@@ -55,7 +52,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		return false;
 	}
 	
-	public static String validateDelimiterInput(String text)
+	private static String validateDelimiterInput(String text)
 	{
 		
 			String[] tokens = text.split("\n");
@@ -69,18 +66,16 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				theNew = newString.substring(3, newString.length()); 
 
 				return theNew;
-				//add(newString);
-		//}
-		//return "";
+				
 	}
 	
-	public static String validateNewlineInput(String text)
+	private static String validateNewlineInput(String text)
 	{
 		text = text.replaceAll("\\n",",");
 		return text;
 	}
 	
-	public static String print()
+	private static String print()
 	{
 		String finalString ="";
 		
@@ -92,7 +87,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 	}
 	
 	//Calculations helper function
-	public static void calculateInput(String text)
+	private static void calculateInput(String text)
 	{
 		if(text.equals("1"))
 		{
@@ -105,7 +100,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		}
 	}
 	
-	public static int oneNumber(String text)
+	private static int oneNumber(String text)
 	{
 		if(toInt(text) >= 0)
 		{
@@ -114,13 +109,13 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		throw new java.lang.IllegalArgumentException("Negatives not allowed: "+toInt(text));
 	}
 	
-	public static int multipleNumbers(String text)
+	private static int multipleNumbers(String text)
 	{
 		String numbers[] = text.split(",");
 		return sum(numbers);
 	}
 	
-	public static int sum(String[] numbers)
+	private static int sum(String[] numbers)
 	{
 		int total = 0;
 		
@@ -140,7 +135,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		}
 	}
 	
-	public static int toInt(String number)
+	private static int toInt(String number)
 	{
 		if(Integer.parseInt(number) > 1000)
 		{
