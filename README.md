@@ -1,4 +1,5 @@
 
+
 # StringCalculator
 dorum ipsum de la
 ## Updates
@@ -18,3 +19,6 @@ Modified adding one number as well
 ### Patch 3: 12.10.2017 08:00
 Fixed issue where new lines between numbers was not ignored
 Fixed issue where numbers bigger than 1000 were taken into account
+
+### Patch 4: 15.10.2017 16:10
+Fixxed issue where delimiter was not working anymore
