@@ -21,50 +21,30 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		}
 		else if(text.contains(","))
 		{
+			if(text.contains("\n"))
+			{
+				text = validateNewlineInput(text);
+			}
 			return multipleNumbers(text);
 		}
 		else 
 		{
-			
-			
 			if(matcher.find())
 			{
 				return oneNumber(text);
 			}
-			//validateInput(text);
 			
-			//if(newLineMatcher.find())
-			if(text.contains("\n"))
+			if(text.startsWith("//"))
 			{
-				if(text.startsWith("//"))
-				{
-					text = validateInput(text);
-					return multipleNumbers(text);
-				}
-				else 
-				{
-					text = text.replaceAll("\\n",",");
-				}
-				
-			}
-			
-			/*if(text.contains(","))
-			{
+				text = validateDelimiterInput(text);
 				return multipleNumbers(text);
-			}*/
-			
-			/*if(text.contains("//"))
-			{
-				text = validateInput(text);
-			}*/
-			
-			
-			
-			return 42;
+			}
+				
+			return 42;	
 		}
 			
-	}
-	
+	}		
+			
 	// Input validation helper 
 	public static boolean isEmpty(String text)
 	{
@@ -75,7 +55,7 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		return false;
 	}
 	
-	public static String validateInput(String text)
+	public static String validateDelimiterInput(String text)
 	{
 		
 			String[] tokens = text.split("\n");
@@ -92,6 +72,12 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 				//add(newString);
 		//}
 		//return "";
+	}
+	
+	public static String validateNewlineInput(String text)
+	{
+		text = text.replaceAll("\\n",",");
+		return text;
 	}
 	
 	public static String print()

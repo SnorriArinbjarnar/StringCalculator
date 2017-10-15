@@ -32,7 +32,7 @@ public class CalculatorTest {
 	{
 		assertEquals(6, Calculator.add("2,2,2"));
 	}
-	
+	*/
 	@Test 
 	public void testWithNewLine()
 	{
@@ -40,7 +40,7 @@ public class CalculatorTest {
 	}
 	
 	
-	
+	/*
 	@Test 
 	public void testWithTwoNegativeNumbers()
 	{
@@ -51,7 +51,7 @@ public class CalculatorTest {
 	public void testWithBiggerThan1000()
 	{
 		assertEquals(2, Calculator.add("1001,2"));
-	}*/
+	}
 	
 	@Test 
 	public void testWithDelimiters()
@@ -59,7 +59,7 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 	
-	/*@Test 
+	@Test 
 	public void testWithDifferentDelimiter()
 	{
 		assertEquals(3, Calculator.add("//;\n1|||2"));
