@@ -9,7 +9,7 @@ public class Calculator {
 static ArrayList<String> negativeVal = new ArrayList<String>();
 	public static int add(String text)
 	{
-		Pattern pattern = Pattern.compile("^[0-9]{1}$");
+		Pattern pattern = Pattern.compile("^-?[0-9]{1}$");
 		Matcher matcher = pattern.matcher(text);
 		
 		Pattern newLinePattern = Pattern.compile(".*\\R.*");
@@ -18,6 +18,10 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 		if(text.isEmpty())
 		{
 			return 0;
+		}
+		else if(text.contains(","))
+		{
+			return multipleNumbers(text);
 		}
 		else 
 		{
@@ -29,16 +33,30 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 			}
 			//validateInput(text);
 			
-			if(newLineMatcher.find())
+			//if(newLineMatcher.find())
+			if(text.contains("\n"))
 			{
-				text = text.replaceAll("\\n",",");
+				if(text.startsWith("//"))
+				{
+					text = validateInput(text);
+					return multipleNumbers(text);
+				}
+				else 
+				{
+					text = text.replaceAll("\\n",",");
+				}
 				
 			}
 			
-			if(text.contains(","))
+			/*if(text.contains(","))
 			{
 				return multipleNumbers(text);
-			}
+			}*/
+			
+			/*if(text.contains("//"))
+			{
+				text = validateInput(text);
+			}*/
 			
 			
 			
@@ -59,23 +77,21 @@ static ArrayList<String> negativeVal = new ArrayList<String>();
 	
 	public static String validateInput(String text)
 	{
-		if(text.contains("\n"))
-		{
-			return text.replaceAll("\n","");
-		}
 		
-		if(text.contains("//"))
-		{
-			String[] tokens = text.split("[//\n]+;");
+			String[] tokens = text.split("\n");
 				String newString = "";
 				for(String s : tokens)
 				{
 					newString+=s;
 				}
-				return newString.replaceAll("[\\D]",",");
+				newString = newString.replaceAll("[\\D]",",");
+				String theNew = "";
+				theNew = newString.substring(3, newString.length()); 
+
+				return theNew;
 				//add(newString);
-		}
-		return "";
+		//}
+		//return "";
 	}
 	
 	public static String print()
