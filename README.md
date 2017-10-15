@@ -1,7 +1,9 @@
 
 
 # StringCalculator
-dorum ipsum de la
+Because of a fail in the testing process, not everything worked as
+expected, that will be fixed in a serious of patches. I guess you could
+call it TDD backwards.
 ## Updates
 
 ### 10.10.2017
